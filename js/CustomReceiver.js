@@ -34,7 +34,7 @@ messageBus.onMessage = function(event) {
   var sender = event.senderId;
   var message = event.data;
   
-  messageBus.send(sender, "p");
+ // messageBus.send(sender, "p");
   
   
 };
