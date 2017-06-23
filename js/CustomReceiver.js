@@ -25,19 +25,7 @@ function CustomReceiver() {
 	this.periodicTimer = null;	// @AT
     
     
-    messageBus = this.castReceiverManager_.getCastMessageBus(
-    "urn:x-cast:com.google.cast.media",
-    cast.receiver.CastMessageBus.MessageType.JSON
-);
 
-messageBus.onMessage = function(event) {
-  var sender = event.senderId;
-  var message = event.data;
-  
-  //messageBus.send(sender, "p");
-  
-  
-};
     
 }
 
