@@ -26,7 +26,7 @@ function CustomReceiver() {
     
     
     messageBus = this.castReceiverManager_.getCastMessageBus(
-    "urn:x-cast:prerna",
+    "urn:x-cast:supery.awesomey.exampley",
     cast.receiver.CastMessageBus.MessageType.JSON
 );
 
