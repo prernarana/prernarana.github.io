@@ -23,6 +23,20 @@ function CustomReceiver() {
 	this.startReceiver_();
 
 	this.periodicTimer = null;	// @AT
+    
+    
+    messageBus = castReceiverManager.getCastMessageBus(
+    namespace,
+    cast.receiver.CastMessageBus.MessageType.JSON
+);
+
+messageBus.onMessage = function(event) {
+  var sender = event.senderId;
+  var message = event.data;
+  
+  alert(sender);
+};
+    
 }
 
 CustomReceiver.prototype.initialiseMediaManagement_ = function() {
