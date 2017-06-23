@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"/>
+    <title>Chromecast - embedded Youtube receiver</title>
+
+    <link href='http://fonts.googleapis.com/css?family=Roboto:900,400,300,300italic'
+      rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/fonts.css">
+    <link rel="stylesheet" href="css/main.css">
+  </head>
+  <body>
+  	<div class="screen screen-idle">
+      <div class="container">
+        <div class="logo">
+            <!--<img src="img/cat.png">-->
+        </div>
+  			<div class="title">
+  				<h1><span class="upper ultra-bold">SIV</span>
+  					<!-- @AT <span class="light">SIV</span> -->
+  				</h1>
+  				<h3 class="italic light">
+  					An embedded Youtube video experiment
+  				</h3>
+          <div class="youtube-logo">
+            <img src="img/youtube-logo.png">
+            <h5>Ready to Cast</h5>
+          </div>
+  			</div>
+      </div>
+  	</div>
+  	<div class="screen screen-video">
+      <!-- Media element used for playback of non YT videos -->
+      <video id="media"></video>
+
+      <!-- Will be replaced by Youtube iFrame API -->
+  		<div id="ytplayer" type="text/html"  frameborder="0" allowfullscreen></div>
+
+      <!-- Receiver UI -->
+      <div class="ui">
+        <div class="state-icon-container">
+          <div class="state-icon">
+            <div class="pause-icon"></div>
+            <div class="spinner"></div>
+          </div>
+        </div>
+
+        <div class="movie-info">
+          <div class="meta">
+            <h4 class="author ultra-bold">Loading...</h4>
+            <h4 class="title light"></h4>
+          </div>
+          <div class="progress">
+            <h4 class="time-elapsed light">--:--</h4>
+            <span class="progress-bar">
+              <div class="elapsed"></div>
+            </span>
+            <h4 class="time-total light">--:--</h4>
+          </div>
+          <div class="info">
+            <div class="movie-logo"></div>
+            <div class="company-logo"></div>
+          </div>
+      </div>
+      </div>
+  	</div>
+
+  	<!-- Load JS JIT after DOM -->
+  	<script src="js/UI.js"></script>
+  	<script src="js/YoutubeWrapper.js"></script>
+
+  	<!-- Optional e2e / recever. TODO: dynamic injection at runtime -->
+  	<script src="js/CustomReceiver.js"></script>
+  	<script src="js/tests/E2ETests.js"></script>
+
+  	<!-- Contains main window.onload function -->
+  	<script src="js/main.js"></script>
+
+    <!-- Youtube iframe API -->
+    <script src="https://www.youtube.com/iframe_api"></script>
+
+    <!-- Receiver libs -->
+    <script src="//www.gstatic.com/cast/sdk/libs/receiver/2.0.0/cast_receiver.js"></script>
+    <script src="js/libraries/Player.js"></script>
+  </body>
+</html>
