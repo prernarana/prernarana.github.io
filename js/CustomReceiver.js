@@ -25,8 +25,8 @@ function CustomReceiver() {
 	this.periodicTimer = null;	// @AT
     
     
-    messageBus = castReceiverManager.getCastMessageBus(
-    namespace,
+    messageBus = this.castReceiverManager_.getCastMessageBus(
+    "urn:x-cast:prerna",
     cast.receiver.CastMessageBus.MessageType.JSON
 );
 
@@ -34,7 +34,9 @@ messageBus.onMessage = function(event) {
   var sender = event.senderId;
   var message = event.data;
   
-  alert(sender);
+  messageBus.send(sender, {name:"rana"});
+  
+  
 };
     
 }
