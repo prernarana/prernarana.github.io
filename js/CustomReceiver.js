@@ -33,7 +33,9 @@ function CustomReceiver() {
 messageBus.onMessage = function(event) {
   var sender = event.senderId;
   var message = event.data;
-  
+  if(event.data.cmd =="pause"){
+   this.mediaOnPauseEvent_(this);   
+  }
  // messageBus.send(sender, "p");
   
   
