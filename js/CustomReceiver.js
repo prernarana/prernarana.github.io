@@ -38,6 +38,8 @@ messageBus.onMessage = function(event) {
   
   
 };
+this.castReceiverManager_.start();
+
     
 }
 
