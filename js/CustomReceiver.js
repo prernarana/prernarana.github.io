@@ -26,7 +26,7 @@ function CustomReceiver() {
     
     
     messageBus = this.castReceiverManager_.getCastMessageBus(
-    "urn:x-cast:prer.rana.rana",
+    "urn:x-cast:com.google.cast.broadcast",
     cast.receiver.CastMessageBus.MessageType.JSON
 );
 
