@@ -36,7 +36,7 @@ messageBus.onMessage = function(event) {
   if(event.data.cmd =="pause"){
    this.mediaOnPauseEvent_(this);   
   }
-  messageBus.send(sender, "p");
+  messageBus.broadcast("p");
   
   
 };
