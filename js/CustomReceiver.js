@@ -21,7 +21,7 @@ function CustomReceiver() {
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
 	this.startReceiver_();
-  this.namespace ="urn:x-cast:omg";
+  this.namespace ="urn:x-cast:com.google.cast.broadcast";
 	this.periodicTimer = null;	// @AT
     
     
@@ -34,7 +34,7 @@ messageBus.onMessage = function(event) {
   //if(event.data.cmd =="pause"){
   // customReceiver.mediaOnPauseEvent_(this);   
  // }
- // messageBus.broadcast("p");
+  messageBus.broadcast("p");
   
   
 };
