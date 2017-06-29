@@ -21,19 +21,21 @@ function CustomReceiver() {
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
 	this.startReceiver_();
-  this.namespace ="urn:x-cast:com.google.cast.broadcast";
+
 	this.periodicTimer = null;	// @AT
     
     
-    messageBus = this.castReceiverManager_.getCastMessageBus(this.namespace);
-
+    messageBus = this.castReceiverManager_.getCastMessageBus(
+    "urn:x-cast:com.google.cast.broadcast",
+    cast.receiver.CastMessageBus.MessageType.JSON
+);
 
 messageBus.onMessage = function(event) {
   var sender = event.senderId;
   var message = event.data;
-  //if(event.data.cmd =="pause"){
-  // customReceiver.mediaOnPauseEvent_(this);   
- // }
+  if(event.data.cmd =="pause"){
+   customReceiver.mediaOnPauseEvent_(this);   
+  }
   messageBus.broadcast("p");
   
   
