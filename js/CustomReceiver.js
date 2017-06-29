@@ -25,9 +25,8 @@ function CustomReceiver() {
 	this.periodicTimer = null;	// @AT
     
     
-    messageBus = this.castReceiverManager_.getCastMessageBus(
-    this.namespace);
-);
+    messageBus = this.castReceiverManager_.getCastMessageBus(this.namespace);
+
 
 messageBus.onMessage = function(event) {
   var sender = event.senderId;
