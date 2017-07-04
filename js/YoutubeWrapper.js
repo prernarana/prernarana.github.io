@@ -111,10 +111,17 @@ YoutubeWrapper.prototype.getVolume = function() {
 	return this.ytPlayer.getVolume();
 }
 
+YoutubeWrapper.prototype.getPlaybackRate = function() {
+	console.debug("YoutubeWrapper.js: getMetaData()");
+	return this.ytPlayer.getPlaybackRate();;
+}
+
+
 YoutubeWrapper.prototype.getMetaData = function() {
 	console.debug("YoutubeWrapper.js: getMetaData()");
 	return this.ytPlayer.getVideoData();;
 }
+
 
 YoutubeWrapper.prototype.getStateText_ = function() {
 	switch(this.ytPlayer.getPlayerState()) {
