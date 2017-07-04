@@ -36,7 +36,11 @@ messageBus.onMessage = function(event) {
   if(event.data.cmd =="pause"){
    customReceiver.mediaOnPauseEvent_(this);   
   }
-  messageBus.broadcast("p");
+  
+   if(event.data.cmd =="end"){
+   customReceiver.mediaOnStopEvent_(this);   
+  }
+  messageBus.broadcast({s:"p"});
   
   
 };
