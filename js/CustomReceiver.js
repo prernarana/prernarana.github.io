@@ -46,7 +46,7 @@ messageBus.onMessage = function(event) {
   }
   
    if(event.data.cmd =="seek"){
-   customReceiver.mediaOnSeekEvent_(event.data.currentTime);   
+   customReceiver.mediaOnSeekEvent_(event);   
   }
   messageBus.broadcast({s:"p"});
   
