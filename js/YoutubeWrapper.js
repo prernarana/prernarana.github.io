@@ -22,7 +22,7 @@ function YoutubeWrapper(iframeElement) {
 
 YoutubeWrapper.prototype.loadVideo = function(id, startTime, callback) {
 	console.debug("YoutubeWrapper.js: loadVideo(" + id + ")");
-	document.dispatchEvent(new Event("video-loading"));
+	
 
 	if(this.ytPlayer == null) {
 		// Set start time
@@ -47,6 +47,7 @@ YoutubeWrapper.prototype.loadVideo = function(id, startTime, callback) {
 
 		});
 	} else {
+        document.dispatchEvent(new Event("video-loading"));
 		this.ytPlayer.loadVideoById(id, startTime, "default");
 		callback();
 	}
