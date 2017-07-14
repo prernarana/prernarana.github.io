@@ -277,7 +277,7 @@ CustomReceiver.prototype.getPlayerState_ = function() {
 	console.debug("CustomReceiver.js: Youtube state is: " + youtubeState);
 	switch(youtubeState) {
 		case "ended":
-			return "ENDED";
+			return "Ended";
 		break;
 		case "playing":
 			return cast.receiver.media.PlayerState.PLAYING;
