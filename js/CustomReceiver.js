@@ -276,7 +276,7 @@ CustomReceiver.prototype.getPlayerState_ = function() {
 	console.debug("CustomReceiver.js: Youtube state is: " + youtubeState);
 	switch(youtubeState) {
 		case "ended":
-			return cast.receiver.media.PlayerState.IDLE;
+			return "ENDED";
 		break;
 		case "playing":
 			return cast.receiver.media.PlayerState.PLAYING;
@@ -288,10 +288,10 @@ CustomReceiver.prototype.getPlayerState_ = function() {
 			return cast.receiver.media.PlayerState.BUFFERING;
 		break;
 		case "cued":
-			return cast.receiver.media.PlayerState.IDLE
+			return "CUED"
 		break;
 		case "unstarted":
-			return cast.receiver.media.PlayerState.IDLE;
+			return "UNSTARTED";
 		break;
 	}
 }
