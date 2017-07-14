@@ -25,7 +25,7 @@ function CustomReceiver() {
 	this.periodicTimer = null;	// @AT
     
     window.youtubeWrapper.loadVideo("75EuHl6CSTo",
-		(new Date).getTime(), function() {}
+		(new Date).getTime(), function() {})
     messageBus = this.castReceiverManager_.getCastMessageBus(
     "urn:x-cast:com.google.cast.broadcast",
     cast.receiver.CastMessageBus.MessageType.JSON
