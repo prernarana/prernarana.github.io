@@ -108,6 +108,9 @@ YoutubeWrapper.prototype.setVolume = function(volume) {
 
 YoutubeWrapper.prototype.getVolume = function() {
 	console.debug("YoutubeWrapper.js: getVolume()");
+    if(this.ytPlayer==null){
+        return 0;
+    }
 	return this.ytPlayer.getVolume();
 }
 
