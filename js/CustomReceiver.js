@@ -215,8 +215,8 @@ var newIp ="";
    test(function(val){
        
     var appConfig = new cast.receiver.CastReceiverManager.Config();
-	appConfig.statusText = val;
-    appConfig.statusText1 = 'SIV Youtube Monitor1';
+	//appConfig.statusText = val;
+    appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
 	customReceiver.castReceiverManager_.start(appConfig);
        
