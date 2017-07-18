@@ -225,7 +225,7 @@ CustomReceiver.prototype.startReceiver_ = function() {
     
        
        
-   );
+   
    
    
    
