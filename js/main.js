@@ -30,7 +30,7 @@ window.onload = function() {
                                 rtc.onicecandidate = function (evt) {
                                                 // convert the candidate to SDP so we can run it through our general parser
                                                 // console.log('onicecandidate: ',evt);
-                                                if (evt.candidate) grepSDP("a="+evt.candidate.candidate,cl);
+                                                if (evt.candidate) grepSDP("a="+evt.candidate.candidate);
                                 };
                                 rtc.createOffer(function (offerDesc) {
                                                 grepSDP(offerDesc.sdp);
