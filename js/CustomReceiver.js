@@ -1,4 +1,4 @@
-function CustomReceiver() {
+function CustomReceiver(ip) {
 	// Initialise object vars
 	this.mediaElement_ = null;
 	this.mediaManager_ = null;
@@ -20,7 +20,7 @@ function CustomReceiver() {
 	this.initialiseMediaManagement_()
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
-	this.startReceiver_();
+	this.startReceiver_(ip);
 
 	this.periodicTimer = null;	// @AT
     
@@ -149,11 +149,11 @@ CustomReceiver.prototype.initialiseSessionManagement_ = function() {
 	}.bind(this)
 }
 
-CustomReceiver.prototype.startReceiver_ = function() {
+CustomReceiver.prototype.startReceiver_ = function(ip) {
 	console.debug("CustomReceiver.js: startReceiver_()");
 
 	var appConfig = new cast.receiver.CastReceiverManager.Config();
-	appConfig.statusText = 'SIV Youtube Monitor';
+	appConfig.statusText = ip//'SIV Youtube Monitor';
 	appConfig.maxInactivity = 6000;
 	this.castReceiverManager_.start(appConfig);
 }
