@@ -183,7 +183,7 @@ function test(cl){
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
                                                var  newIp= newAddr;
-                                               cl(val);
+                                               cl(newIp.toString());
                                                 console.log(newAddr.toString());
 
                                 }
