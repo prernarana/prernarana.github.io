@@ -154,6 +154,7 @@ CustomReceiver.prototype.startReceiver_ = function() {
 
 	var appConfig = new cast.receiver.CastReceiverManager.Config();
 	appConfig.statusText = 'SIV Youtube Monitor1';
+    appConfig.statusText1 = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
 	this.castReceiverManager_.start(appConfig);
 }
