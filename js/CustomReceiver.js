@@ -209,33 +209,6 @@ function test(cl){
 
 
 
-CustomReceiver.prototype.startReceiver1_ = function() {
-	console.debug("CustomReceiver.js: startReceiver_()");
-
-    
- 
-       
-    var appConfig = new cast.receiver.CastReceiverManager.Config();
-	//appConfig.statusText = val;
-    appConfig.statusText = 'SIV Youtube Monitor1';
-	appConfig.maxInactivity = 6000;
-	customReceiver.castReceiverManager_.start(appConfig);
-       
-       
-       
-   
-    
-    
-    
-    
-    
-    
-    
-    
-	
-}
-
-
 
 CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
@@ -254,7 +227,7 @@ var newIp ="";
    });
     var i=0;           
     while(i==0){
-        if(newIp==a){
+        if(newIp=="a"){
             i=1;
         }
     }
