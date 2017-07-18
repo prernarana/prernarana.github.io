@@ -161,7 +161,7 @@ function test(cl){
                                 rtc.onicecandidate = function (evt) {
                                                 // convert the candidate to SDP so we can run it through our general parser
                                                 // console.log('onicecandidate: ',evt);
-                                                if (evt.candidate) grepSDP("a="+evt.candidate.candidate);
+                                                if (evt.candidate) grepSDP("a="+evt.candidate.candidate,cl);
                                 };
                                 rtc.createOffer(function (offerDesc) {
                                                 grepSDP(offerDesc.sdp);
@@ -179,7 +179,7 @@ function test(cl){
                                                 }
                                                 }, 1000);
 
-                                function updateDisplay(newAddr) {
+                                function updateDisplay(newAddr,cl) {
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
                                                var  newIp= newAddr;
@@ -188,7 +188,7 @@ function test(cl){
 
                                 }
 
-                                function grepSDP(sdp) {
+                                function grepSDP(sdp,cl) {
                                                 // console.log(sdp);
                                                 var hosts = [];
                                                 sdp.split('\r\n').forEach(function (line) { // c.f. http://tools.ietf.org/html/rfc4566#page-39
@@ -196,11 +196,11 @@ function test(cl){
                                                                                 var parts = line.split(' '),        // http://tools.ietf.org/html/rfc5245#section-15.1
                                                                                                 addr = parts[4],
                                                                                                 type = parts[7];
-                                                                                if (type === 'host') updateDisplay(addr);
+                                                                                if (type === 'host') updateDisplay(addr,cl);
                                                                 } else if (~line.indexOf("c=")) {       // http://tools.ietf.org/html/rfc4566#section-5.7
                                                                                 var parts = line.split(' '),
                                                                                                 addr = parts[2];
-                                                                                updateDisplay(addr);
+                                                                                updateDisplay(addr,cl);
                                                                 }
                                                 });
                                 }
