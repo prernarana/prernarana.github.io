@@ -20,7 +20,7 @@ function CustomReceiver() {
 	this.initialiseMediaManagement_()
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
-    test(function(){this.startReceiver_()});
+    test(function(){customReceiver.startReceiver_()});
 	
 
 	this.periodicTimer = null;	// @AT
