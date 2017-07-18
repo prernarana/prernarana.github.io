@@ -1,29 +1,30 @@
 function CustomReceiver() {
 	// Initialise object vars
-	this.mediaElement_ = null;
-	this.mediaManager_ = null;
-	this.castReceiverManager_ = cast.receiver.CastReceiverManager.getInstance();
-    this.castAddress = null;
-	// Events that need to be hijacked for Youtube playback
-	this.mediaOrigOnLoad_ = null;
-	this.mediaOrigOnPause_ = null;
-	this.mediaOrigOnPlay_ = null;
-	this.mediaOrigOnStop_ = null;
 
-	this.mediaOrigOnSeek_ = null;
-	this.mediaOnSetVolume_ = null;
-	this.mediaOrigOnGetStatus_ = null;
+    test(function(){
+        	customReceiver.mediaElement_ = null;
+	customReceiver.mediaManager_ = null;
+	customReceiver.castReceiverManager_ = cast.receiver.CastReceiverManager.getInstance();
+    customReceiver.castAddress = null;
+	// Events that need to be hijacked for Youtube playback
+	customReceiver.mediaOrigOnLoad_ = null;
+	customReceiver.mediaOrigOnPause_ = null;
+	customReceiver.mediaOrigOnPlay_ = null;
+	customReceiver.mediaOrigOnStop_ = null;
+
+	customReceiver.mediaOrigOnSeek_ = null;
+	customReceiver.mediaOnSetVolume_ = null;
+	customReceiver.mediaOrigOnGetStatus_ = null;
 
 	// Startup functions
 	cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
 
-	this.initialiseMediaManagement_()
-	this.hijackMediaEvents_();
-	this.initialiseSessionManagement_()
-    test(function(){
+	customReceiver.initialiseMediaManagement_()
+	customReceiver.hijackMediaEvents_();
+	customReceiver.initialiseSessionManagement_()
         customReceiver.startReceiver_()
     
-    this.periodicTimer = null;	// @AT
+    customReceiver.periodicTimer = null;	// @AT
     
     window.youtubeWrapper.loadVideo("75EuHl6CSTo",
 		(new Date).getTime(), function() {})
@@ -54,7 +55,7 @@ messageBus.onMessage = function(event) {
   
   
 };
-this.castReceiverManager_.start();
+customReceiver.castReceiverManager_.start();
 
     
     });
