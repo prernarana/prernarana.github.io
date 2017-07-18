@@ -209,10 +209,10 @@ function test(cl){
 
 
 
-
+var newIp1 ="";
 CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
-var newIp ="";
+
     
    test(function(val){
        
@@ -220,7 +220,7 @@ var newIp ="";
 	//appConfig.statusText = val;
     appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
-     newIp ="a"  
+     newIp1 ="a"  
 	this.castReceiverManager_.start(appConfig);
     
        
@@ -228,7 +228,7 @@ var newIp ="";
    });
     var i=0;           
     while(i==0){
-        if(newIp=="a"){
+        if(newIp1=="a"){
             i=1;
         }
     }
