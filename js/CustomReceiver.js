@@ -243,13 +243,21 @@ var newIp ="";
     
    test(function(val){
        
-  customReceiver.startReceiver1_();
-       
+    var appConfig = new cast.receiver.CastReceiverManager.Config();
+	//appConfig.statusText = val;
+    appConfig.statusText = 'SIV Youtube Monitor1';
+	appConfig.maxInactivity = 6000;
+	customReceiver.castReceiverManager_.start(appConfig);
+     newIp ="a"  
        
        
    });
-               
-    
+    var i=0;           
+    while(i==0){
+        if(newIp==a){
+            i=1;
+        }
+    }
     
     
     
