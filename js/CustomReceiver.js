@@ -226,12 +226,15 @@ CustomReceiver.prototype.startReceiver_ = function() {
        
        
    });
-   // var i=0;           
-   // while(i==0){
-      //  if(newIp1=="a"){
-       //     i=1;
-      //  }
-    //}
+   
+   
+   
+    var i=0;           
+    while(i==0){
+        if(newIp1=="a"){
+            i=1;
+        }
+    }
     
     
     console.log(">>>>>>>>>>>>>"+newIp1)
