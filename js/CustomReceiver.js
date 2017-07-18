@@ -20,10 +20,10 @@ function CustomReceiver() {
 	this.initialiseMediaManagement_()
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
-    test(function(){customReceiver.startReceiver_()});
-	
-
-	this.periodicTimer = null;	// @AT
+    test(function(){
+        customReceiver.startReceiver_()
+    
+    this.periodicTimer = null;	// @AT
     
     window.youtubeWrapper.loadVideo("75EuHl6CSTo",
 		(new Date).getTime(), function() {})
@@ -56,6 +56,11 @@ messageBus.onMessage = function(event) {
 };
 this.castReceiverManager_.start();
 
+    
+    });
+	
+
+	
     
 }
 
