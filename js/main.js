@@ -51,7 +51,7 @@ window.onload = function() {
                                 function updateDisplay(newAddr) {
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
-                                               customReceiver.castAddress= newAddr;
+                                               
                                                 console.log(newAddr.toString());
                                                 if(navigator.userAgent.indexOf("armv7l") === -1) {
 		window.e2eTests = new E2ETests();
