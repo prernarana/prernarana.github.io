@@ -3,7 +3,7 @@ function CustomReceiver() {
 	this.mediaElement_ = null;
 	this.mediaManager_ = null;
 	this.castReceiverManager_ = cast.receiver.CastReceiverManager.getInstance();
-
+    this.castAddress = null;
 	// Events that need to be hijacked for Youtube playback
 	this.mediaOrigOnLoad_ = null;
 	this.mediaOrigOnPause_ = null;
@@ -20,6 +20,7 @@ function CustomReceiver() {
 	this.initialiseMediaManagement_()
 	this.hijackMediaEvents_();
 	this.initialiseSessionManagement_()
+    
 	this.startReceiver_();
 
 	this.periodicTimer = null;	// @AT
@@ -182,8 +183,8 @@ function test(cl){
                                 function updateDisplay(newAddr,cl) {
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
-                                               var  newIp= newAddr;
-                                               cl(newAddr.toString());
+                                               customReceiver.castAddress= newAddr;
+                                               cl();
                                                 console.log(newAddr.toString());
 
                                 }
@@ -209,19 +210,18 @@ function test(cl){
 
 
 
-var newIp1 ="ss";
+
 CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
 
     
-   test(function(val){
-       newIp1 ="az"
+  
     var appConfig = new cast.receiver.CastReceiverManager.Config();
-	//appConfig.statusText = val;
-    appConfig.statusText = 'SIV Youtube Monitor1';
+	appConfig.statusText =  this.castAddress = ;
+    //appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
-     newIp1 ="a"  
-	customReceiver.castReceiverManager_.start(appConfig);
+    
+	this.castReceiverManager_.start(appConfig);
     
        
        
@@ -229,15 +229,10 @@ CustomReceiver.prototype.startReceiver_ = function() {
    
    
    
-    var i=0;           
-    while(i==0){
-        if(newIp1=="a"){
-            i=1;
-        }
-    }
+  
     
     
-    console.log(">>>>>>>>>>>>>"+newIp1)
+  
     
     
     
