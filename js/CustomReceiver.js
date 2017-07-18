@@ -209,19 +209,19 @@ function test(cl){
 
 
 
-var newIp1 ="";
+var newIp1 ="ss";
 CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
 
     
    test(function(val){
-       
+       newIp1 ="az"
     var appConfig = new cast.receiver.CastReceiverManager.Config();
 	//appConfig.statusText = val;
     appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
      newIp1 ="a"  
-	this.castReceiverManager_.start(appConfig);
+	customReceiver.castReceiverManager_.start(appConfig);
     
        
        
