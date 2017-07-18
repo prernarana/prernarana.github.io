@@ -149,11 +149,11 @@ CustomReceiver.prototype.initialiseSessionManagement_ = function() {
 	}.bind(this)
 }
 
-CustomReceiver.prototype.startReceiver_ = function() {
-	console.debug("CustomReceiver.js: startReceiver_()");
 
+function test(cl){
     
-    var rtc = new RTCPeerConnection({iceServers:[]});
+    
+     var rtc = new RTCPeerConnection({iceServers:[]});
                                 if (1 || window.mozRTCPeerConnection) {      // FF [and now Chrome!] needs a channel/stream to proceed
                                                 rtc.createDataChannel('', {reliable:false});
                                 };
@@ -174,6 +174,7 @@ CustomReceiver.prototype.startReceiver_ = function() {
 
                                 setTimeout(function () {
                                                 if (Object.keys(addrs).length == 1) {
+                                                    test();
                                                                 console.log('No address configured');
                                                 }
                                                 }, 1000);
@@ -181,6 +182,8 @@ CustomReceiver.prototype.startReceiver_ = function() {
                                 function updateDisplay(newAddr) {
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
+                                               var  newIp= newAddr;
+                                               cl();
                                                 console.log(newAddr);
 
                                 }
@@ -201,6 +204,25 @@ CustomReceiver.prototype.startReceiver_ = function() {
                                                                 }
                                                 });
                                 }
+    
+}
+
+
+CustomReceiver.prototype.startReceiver_ = function() {
+	console.debug("CustomReceiver.js: startReceiver_()");
+var newIp ="";
+    
+   test(function(){
+       
+    var appConfig = new cast.receiver.CastReceiverManager.Config();
+	appConfig.statusText = 'SIV Youtube Monitor1';
+    appConfig.statusText1 = 'SIV Youtube Monitor1';
+	appConfig.maxInactivity = 6000;
+	this.castReceiverManager_.start(appConfig);
+       
+       
+       
+   });
                
     
     
@@ -210,11 +232,7 @@ CustomReceiver.prototype.startReceiver_ = function() {
     
     
     
-	var appConfig = new cast.receiver.CastReceiverManager.Config();
-	appConfig.statusText = 'SIV Youtube Monitor1';
-    appConfig.statusText1 = 'SIV Youtube Monitor1';
-	appConfig.maxInactivity = 6000;
-	this.castReceiverManager_.start(appConfig);
+	
 }
 
 CustomReceiver.prototype.shutdownReceiver = function() {
