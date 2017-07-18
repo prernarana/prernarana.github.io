@@ -190,8 +190,9 @@ function test(cl){
                                                 if (newAddr in addrs) return;
                                                 addrs[newAddr] = true;
                                                customReceiver.castAddress= newAddr;
-                                               cl();
                                                 console.log(newAddr.toString());
+                                                cl();
+                                               
 
                                 }
 
@@ -223,6 +224,7 @@ CustomReceiver.prototype.startReceiver_ = function() {
     
   
     var appConfig = new cast.receiver.CastReceiverManager.Config();
+    console.log(this.castAddress);
 	appConfig.statusText =  this.castAddress ;
     //appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
