@@ -1,34 +1,32 @@
 function CustomReceiver() {
 	// Initialise object vars
+	this.mediaElement_ = null;
+	this.mediaManager_ = null;
+	this.castReceiverManager_ = cast.receiver.CastReceiverManager.getInstance();
 
-    test(function(){
-        	customReceiver.mediaElement_ = null;
-	customReceiver.mediaManager_ = null;
-	customReceiver.castReceiverManager_ = cast.receiver.CastReceiverManager.getInstance();
-    customReceiver.castAddress = null;
 	// Events that need to be hijacked for Youtube playback
-	customReceiver.mediaOrigOnLoad_ = null;
-	customReceiver.mediaOrigOnPause_ = null;
-	customReceiver.mediaOrigOnPlay_ = null;
-	customReceiver.mediaOrigOnStop_ = null;
+	this.mediaOrigOnLoad_ = null;
+	this.mediaOrigOnPause_ = null;
+	this.mediaOrigOnPlay_ = null;
+	this.mediaOrigOnStop_ = null;
 
-	customReceiver.mediaOrigOnSeek_ = null;
-	customReceiver.mediaOnSetVolume_ = null;
-	customReceiver.mediaOrigOnGetStatus_ = null;
+	this.mediaOrigOnSeek_ = null;
+	this.mediaOnSetVolume_ = null;
+	this.mediaOrigOnGetStatus_ = null;
 
 	// Startup functions
 	cast.receiver.logger.setLevelValue(cast.receiver.LoggerLevel.DEBUG);
 
-	customReceiver.initialiseMediaManagement_()
-	customReceiver.hijackMediaEvents_();
-	customReceiver.initialiseSessionManagement_()
-        customReceiver.startReceiver_()
-    
-    customReceiver.periodicTimer = null;	// @AT
+	this.initialiseMediaManagement_()
+	this.hijackMediaEvents_();
+	this.initialiseSessionManagement_()
+	this.startReceiver_();
+
+	this.periodicTimer = null;	// @AT
     
     window.youtubeWrapper.loadVideo("75EuHl6CSTo",
 		(new Date).getTime(), function() {})
-    messageBus = customReceiver.castReceiverManager_.getCastMessageBus(
+    messageBus = this.castReceiverManager_.getCastMessageBus(
     "urn:x-cast:com.google.cast.broadcast",
     cast.receiver.CastMessageBus.MessageType.JSON
 );
@@ -55,13 +53,8 @@ messageBus.onMessage = function(event) {
   
   
 };
-customReceiver.castReceiverManager_.start();
+this.castReceiverManager_.start();
 
-    
-    });
-	
-
-	
     
 }
 
@@ -156,96 +149,13 @@ CustomReceiver.prototype.initialiseSessionManagement_ = function() {
 	}.bind(this)
 }
 
-
-function test(cl){
-    
-    
-     var rtc = new RTCPeerConnection({iceServers:[]});
-                                if (1 || window.mozRTCPeerConnection) {      // FF [and now Chrome!] needs a channel/stream to proceed
-                                                rtc.createDataChannel('', {reliable:false});
-                                };
-
-                                rtc.onicecandidate = function (evt) {
-                                                // convert the candidate to SDP so we can run it through our general parser
-                                                // console.log('onicecandidate: ',evt);
-                                                if (evt.candidate) grepSDP("a="+evt.candidate.candidate,cl);
-                                };
-                                rtc.createOffer(function (offerDesc) {
-                                                grepSDP(offerDesc.sdp);
-                                                rtc.setLocalDescription(offerDesc);
-                                }, function (e) { console.warn("offer failed", e); });
-
-
-                                var addrs = Object.create(null);
-                                addrs["0.0.0.0"] = false;
-
-                                setTimeout(function () {
-                                                if (Object.keys(addrs).length == 1) {
-                                                    test();
-                                                                console.log('No address configured');
-                                                }
-                                                }, 1000);
-
-                                function updateDisplay(newAddr,cl) {
-                                                if (newAddr in addrs) return;
-                                                addrs[newAddr] = true;
-                                               customReceiver.castAddress= newAddr;
-                                                console.log(newAddr.toString());
-                                                cl();
-                                               
-
-                                }
-
-                                function grepSDP(sdp,cl) {
-                                                // console.log(sdp);
-                                                var hosts = [];
-                                                sdp.split('\r\n').forEach(function (line) { // c.f. http://tools.ietf.org/html/rfc4566#page-39
-                                                                if (~line.indexOf("a=candidate")) {     // http://tools.ietf.org/html/rfc4566#section-5.13
-                                                                                var parts = line.split(' '),        // http://tools.ietf.org/html/rfc5245#section-15.1
-                                                                                                addr = parts[4],
-                                                                                                type = parts[7];
-                                                                                if (type === 'host') updateDisplay(addr,cl);
-                                                                } else if (~line.indexOf("c=")) {       // http://tools.ietf.org/html/rfc4566#section-5.7
-                                                                                var parts = line.split(' '),
-                                                                                                addr = parts[2];
-                                                                                updateDisplay(addr,cl);
-                                                                }
-                                                });
-                                }
-    
-}
-
-
-
-
 CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
 
-    
-  
-    var appConfig = new cast.receiver.CastReceiverManager.Config();
-    console.log(this.castAddress);
-	appConfig.statusText =  this.castAddress ;
-    //appConfig.statusText = 'SIV Youtube Monitor1';
+	var appConfig = new cast.receiver.CastReceiverManager.Config();
+	appConfig.statusText = 'SIV Youtube Monitor';
 	appConfig.maxInactivity = 6000;
-    
-	customReceiver.castReceiverManager_.start(appConfig);
-    
-       
-       
-   
-   
-   
-   
-  console.log("done")
-    
-    
-  
-    
-    
-    
-    
-	
+	this.castReceiverManager_.start(appConfig);
 }
 
 CustomReceiver.prototype.shutdownReceiver = function() {
