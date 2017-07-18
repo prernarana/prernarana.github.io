@@ -184,7 +184,7 @@ function test(cl){
                                                 addrs[newAddr] = true;
                                                var  newIp= newAddr;
                                                cl(val);
-                                                console.log(newAddr);
+                                                console.log(newAddr.toString());
 
                                 }
 
