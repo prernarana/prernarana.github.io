@@ -212,13 +212,15 @@ CustomReceiver.prototype.startReceiver_ = function() {
 	console.debug("CustomReceiver.js: startReceiver_()");
 var newIp ="";
     
-   test(function(val){
-       
     var appConfig = new cast.receiver.CastReceiverManager.Config();
 	//appConfig.statusText = val;
     appConfig.statusText = 'SIV Youtube Monitor1';
 	appConfig.maxInactivity = 6000;
 	customReceiver.castReceiverManager_.start(appConfig);
+    
+   test(function(val){
+       
+    
        
        
        
