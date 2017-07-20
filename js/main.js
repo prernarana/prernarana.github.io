@@ -77,10 +77,5 @@ window.onload = function() {
 
 
     fetchSelfIP();
-    
-    
-    
-    
-    
 	
 }
