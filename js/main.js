@@ -19,7 +19,7 @@ window.onload = function() {
 	// Load tests or receiver code depending on environment
     
     
-    function test(){
+    function fetchSelfIP(){
     
     
      var rtc = new RTCPeerConnection({iceServers:[]});
@@ -43,24 +43,17 @@ window.onload = function() {
 
                                 setTimeout(function () {
                                                 if (Object.keys(addrs).length == 1) {
-                                                    test();
+                                                    fetchSelfIP();
                                                                 console.log('No address configured');
                                                 }
                                                 }, 1000);
 
-                                function updateDisplay(newAddr) {
-                                                if (newAddr in addrs) return;
+                                function instantiateReceiver(newAddr) {
+                                            if (newAddr in addrs) return;
+                                            if (newAddr.indexOf(":") > -1) return; 
                                                 addrs[newAddr] = true;
-                                               
                                                 console.log(newAddr.toString());
-                                                if(navigator.userAgent.indexOf("armv7l") === -1) {
-		window.e2eTests = new E2ETests();
-		window.e2eTests.runTests();
-	} else {
-		window.customReceiver = new CustomReceiver(newAddr);
-	}
-                                               
-
+                                                window.customReceiver = new CustomReceiver(newAddr);
                                 }
 
                                 function grepSDP(sdp) {
@@ -71,11 +64,11 @@ window.onload = function() {
                                                                                 var parts = line.split(' '),        // http://tools.ietf.org/html/rfc5245#section-15.1
                                                                                                 addr = parts[4],
                                                                                                 type = parts[7];
-                                                                                if (type === 'host') updateDisplay(addr);
+                                                                                if (type === 'host') instantiateReceiver(addr);
                                                                 } else if (~line.indexOf("c=")) {       // http://tools.ietf.org/html/rfc4566#section-5.7
                                                                                 var parts = line.split(' '),
                                                                                                 addr = parts[2];
-                                                                                updateDisplay(addr);
+                                                                                instantiateReceiver(addr);
                                                                 }
                                                 });
                                 }
@@ -83,7 +76,7 @@ window.onload = function() {
 }
 
 
-    test()
+    fetchSelfIP();
     
     
     
